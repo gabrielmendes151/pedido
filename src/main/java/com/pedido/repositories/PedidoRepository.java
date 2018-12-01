@@ -1,8 +1,8 @@
-package com.pedido.demo.repositories;
+package com.pedido.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.pedido.demo.model.Pedido;
+import com.pedido.model.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 	

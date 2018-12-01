@@ -1,4 +1,4 @@
-package com.pedido.demo.model;
+package com.pedido.model;
 
 import java.io.Serializable;
 
