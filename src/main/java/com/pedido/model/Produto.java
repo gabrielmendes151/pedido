@@ -7,18 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="produto")
 public class Produto implements Serializable{
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public Produto() {}
@@ -34,10 +28,6 @@ public class Produto implements Serializable{
 	
 	private double preco;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_pedido")
-	private Pedido pedido;
-
 	public Long getIdProduto() {
 		return idProduto;
 	}
@@ -68,14 +58,6 @@ public class Produto implements Serializable{
 
 	public void setPreco(double preco) {
 		this.preco = preco;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
 	}
 	
 }
