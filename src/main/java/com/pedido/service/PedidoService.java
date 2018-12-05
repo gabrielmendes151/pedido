@@ -14,6 +14,5 @@ public class PedidoService {
 	
 	public Pedido salvar(Pedido pedido) {
 		return pedidoBean.salvar(pedido);
-		//gravar rabbit
 	}
 }

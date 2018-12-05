@@ -24,16 +24,16 @@ public class Pedido implements Serializable {
 	public Pedido() {}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_pedido")
 	private Long idPedido;
 	
-	@ManyToOne
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id_cliente")
 	private Cliente cliente;
 	
 	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_pedido")
+	@JoinColumn(name = "id_pedido",referencedColumnName = "id_pedido")
 	private List<ItensPedido> itensPedido;
 	
 	@Column(name="valor_total")
@@ -58,14 +58,6 @@ public class Pedido implements Serializable {
 		this.cliente = cliente;
 	}
 
-	/*public List<Produto> getListaProduto() {
-		return listaProduto;
-	}
-
-	public void setListaProduto(List<Produto> listaProduto) {
-		this.listaProduto = listaProduto;
-	}*/
-
 	public double getValorTotal() {
 		return valorTotal;
 	}
@@ -80,6 +72,14 @@ public class Pedido implements Serializable {
 
 	public void setEnderecoEntrega(String enderecoEntrega) {
 		this.enderecoEntrega = enderecoEntrega;
+	}
+
+	public List<ItensPedido> getItensPedido() {
+		return itensPedido;
+	}
+
+	public void setItensPedido(List<ItensPedido> itensPedido) {
+		this.itensPedido = itensPedido;
 	}
 	
 }

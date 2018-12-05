@@ -15,9 +15,9 @@ import com.pedido.service.PedidoService;
 public class PedidoController {
 	
 	@Autowired
-	private PedidoService pedidoService ;
+	private PedidoService pedidoService;
 	
-	@PostMapping
+	@PostMapping(produces = "application/json")
 	ResponseEntity<Pedido>inserir(@RequestBody Pedido pedido){
 		return ResponseEntity.ok(pedidoService.salvar(pedido));
 	}
