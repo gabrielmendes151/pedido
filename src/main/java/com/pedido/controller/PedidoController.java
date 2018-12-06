@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pedido.helper.Sender;
 import com.pedido.model.Pedido;
 import com.pedido.service.PedidoService;
 
@@ -19,6 +20,8 @@ public class PedidoController {
 	
 	@PostMapping(produces = "application/json")
 	ResponseEntity<Pedido>inserir(@RequestBody Pedido pedido){
-		return ResponseEntity.ok(pedidoService.salvar(pedido));
+		ResponseEntity<Pedido> ok = ResponseEntity.ok(pedidoService.salvar(pedido));
+		Sender.enviarMensagem(pedido);
+		return ok;
 	}
 }

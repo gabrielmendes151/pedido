@@ -3,7 +3,6 @@ package com.pedido;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -20,10 +19,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import com.pedido.model.Cliente;
+import com.pedido.model.Entrega;
 import com.pedido.model.ItensPedido;
 import com.pedido.model.Pedido;
 import com.pedido.model.Produto;
-import com.pedido.service.PedidoService;
 import com.pedido.service.ProdutoService;
 
 @RunWith(SpringRunner.class)
@@ -67,5 +66,14 @@ public class PedidoApplicationTests {
 		Assert.assertEquals(200, result.getStatusCodeValue());
 		Assert.assertEquals(true, result.getBody().getIdPedido() > 0);
 	}
-
+	
+	@Test
+	public void testarPegarMensagemFilaESalvarEntregas() throws URISyntaxException, InterruptedException {
+		RestTemplate restTemplate = new RestTemplate();
+		final String baseUrl = "http://localhost:" + serverPort + "/entrega";
+		URI uri = new URI(baseUrl);
+		ResponseEntity<Entrega[]> result = restTemplate.getForEntity(uri, Entrega[].class);
+		Assert.assertEquals(200, result.getStatusCodeValue());
+		Assert.assertEquals(true, result.getBody() != null);
+	}
 }
